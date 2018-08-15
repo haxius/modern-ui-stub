@@ -9,7 +9,9 @@ export default styled.article.attrs({
       header: { height },
       space,
       breakpoints: [ mobile ]
-    }
+    },
+    forceSidebar,
+    sidebarWidth
   }) => `
     background-color: ${backgroundColor};
     width: ${width}px;
@@ -17,7 +19,16 @@ export default styled.article.attrs({
     padding-top: calc(${height}px + ${space[2]}px);
     word-wrap: nowrap;
     overflow-x: hidden;
-    position: relative;
+
+    position: fixed;
+    top: 0px;
+    left: 0px;
+
+    ${!!forceSidebar || `
+      @media screen and (max-width: ${mobile}) {
+        left: -${sidebarWidth}px;
+      }
+    `}
 
     -ms-overflow-style: none;
 
@@ -30,5 +41,5 @@ export default styled.article.attrs({
     @media screen and (max-width: ${mobile}) {
       padding-top: ${space[2]}px;
     }
-  `};
+  `}
 `;

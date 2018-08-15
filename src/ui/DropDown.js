@@ -4,8 +4,8 @@ import styled from "styled-components";
 import { Box } from "grid-styled";
 import { ChevronDownIcon } from "mdi-react";
 
-import StretchFlex from './StretchFlex';
-import Icon from './Icon';
+import StretchFlex from "./StretchFlex";
+import Icon from "./Icon";
 
 const StyledBox = styled(Box).attrs({
   className: "ui--dropdown-caption"

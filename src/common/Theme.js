@@ -42,6 +42,30 @@ export const globalStyles = `
   }
 `;
 
+const colors = {
+  blue: '#2DCEE3',
+  indigo: '#6610F2',
+  purple: '#6F42C1',
+  pink: '#E83E8C',
+  red: '#FF7588',
+  orange: '#FFA87D',
+  yellow: '#FFC107',
+  green: '#16D39A',
+  teal: '#20C997',
+  cyan: '#00B5B8',
+  white: '#FFFFFF',
+  gray: '#404E67',
+  grayDark: '#1B2942',
+  primary: '#00B5B8',
+  secondary: '#404E67',
+  success: '#16D39A',
+  info: '#2DCEE3',
+  warning: '#FFA87D',
+  danger: '#FF7588',
+  light: '#BABFC7',
+  dark: '#1B2942',
+};
+
 export default {
   // 4dp Grid for grid-styled,
   space: densityIndependentPixels(),
@@ -94,5 +118,8 @@ export default {
     h3: typeStyle(48),
     h2: typeStyle(60, -0.5, null, "light"),
     h1: typeStyle(96, -0.15, null, "light")
-  }
+  },
+
+  // colors
+  colors
 };

@@ -1,17 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { ThemeProvider, injectGlobal } from 'styled-components';
+import React from "react";
+import ReactDOM from "react-dom";
+import { ThemeProvider, injectGlobal } from "styled-components";
 
 import Routes from "./routes";
-import StackLayout from './common/StackLayout';
-import Theme, { globalStyles } from './common/Theme';
+import StackLayout from "./common/StackLayout";
+import Theme, { globalStyles } from "./common/Theme";
 
-injectGlobal`${globalStyles}`
+injectGlobal`${globalStyles}`;
 
-ReactDOM.render((
+ReactDOM.render(
   <ThemeProvider theme={Theme}>
     <StackLayout>
       <Routes />
     </StackLayout>
-  </ThemeProvider>
-), document.getElementById('root'));
+  </ThemeProvider>,
+  document.getElementById("root")
+);

@@ -4,11 +4,11 @@ import styled from "styled-components";
 import { Box } from "grid-styled";
 import { ChevronDownIcon, ChevronUpIcon } from "mdi-react";
 
-import Icon from './Icon';
-import StretchFlex from './StretchFlex';
+import Icon from "./Icon";
+import StretchFlex from "./StretchFlex";
 
 const StyledList = StretchFlex.extend.attrs({
-  className: 'ui--list',
+  className: "ui--list"
 })`
   ${({ theme: { space }, tint }) => `
     min-width: 0;
@@ -103,24 +103,28 @@ class List extends Component {
     const { active, toggled } = this.state;
 
     return (
-      <StyledList
-        flexDirection="column"
-        stretchy="auto"
-        tint={tint}
-      >
+      <StyledList flexDirection="column" stretchy="auto" tint={tint}>
         {items.map(({ caption, children }, index) => {
           const makeActive = () => this.makeActive(index);
           const isActive = index === active && !!toggled;
 
           return (
             <Fragment key={`list--item-${index}`}>
-              <StretchFlex stretchy="auto" onClick={makeActive} className="ui--list-itemWrapper">
+              <StretchFlex
+                stretchy="auto"
+                onClick={makeActive}
+                className="ui--list-itemWrapper"
+              >
                 <StyledBox maxwidth="75%">{caption}</StyledBox>
                 <Spacer />
                 {!!children && (
                   <Fragment>
-                    <Icon mdi={<ListItemExpander active={isActive ? 1 : 0} />} />
-                    <Icon mdi={<ListItemExpanded active={isActive ? 1 : 0} />} />
+                    <Icon
+                      mdi={<ListItemExpander active={isActive ? 1 : 0} />}
+                    />
+                    <Icon
+                      mdi={<ListItemExpanded active={isActive ? 1 : 0} />}
+                    />
                     <Box mr={6} />
                   </Fragment>
                 )}

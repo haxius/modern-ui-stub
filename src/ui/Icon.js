@@ -6,13 +6,9 @@ import { Flex } from "grid-styled";
 const StyledFlex = styled(Flex).attrs({
   className: "ui--icon"
 })`
-  ${({
-    theme: {
-      type: { body1 }
-    }
-  }) => `
-    ${body1}
+  ${({ theme: { colors }, color }) => `
     height: auto;
+    color: ${!!color ? colors[color] : "inherit"};
   `}
 `;
 

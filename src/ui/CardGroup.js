@@ -5,36 +5,65 @@ export default StretchFlex.extend.attrs({
 })`
   ${({
     theme: {
-      breakpoints: [mobile],
+      breakpoints: [mobile, tablet, desktop, largeDesktop],
       space
-    }
+    },
+    columns
   }) => `
     flex-direction: column;
     flex-wrap: wrap;
 
-    > .ui--card {
-      margin-top: ${space[4]}px;
+    > .ui--cardWrapper {
       flex-grow: 1;
       flex-shrink: 0;
       width: 100%;
-
-      &:first-child {
-        margin-top: ${space[2]}px;
-      }
     }
 
     @media screen and (min-width: ${mobile}) {
       flex-direction: row;
 
-      > .ui--card {
+      > .ui--cardWrapper {
         flex-grow: 0;
-        width: calc(50% - ${space[2]}px);
-        margin-top: ${space[2]}px;
-        
-        &:nth-child(odd) {
-          margin-right: ${space[4]}px;
-        }
       }
     }
+
+    ${!!columns && "string" === typeof columns && `
+      @media screen and (min-width: ${mobile}) {
+        > .ui--cardWrapper {
+          width: ${100 / columns}%;
+        }
+      }
+    `}
+
+    ${!!columns && "object" === typeof columns && `
+      ${1 <= columns.length && `
+        @media screen and (min-width: ${mobile}) {
+          > .ui--cardWrapper {
+            width: ${100 / columns[0]}%;
+          }
+        }
+      `}
+      ${2 <= columns.length && `
+        @media screen and (min-width: ${tablet}) {
+          > .ui--cardWrapper {
+            width: ${100 / columns[1]}%;
+          }
+        }
+      `}
+      ${3 <= columns.length && `
+        @media screen and (min-width: ${desktop}) {
+          > .ui--cardWrapper {
+            width: ${100 / columns[2]}%;
+          }
+        }
+      `}
+      ${4 <= columns.length && `
+        @media screen and (min-width: ${largeDesktop}) {
+          > .ui--cardWrapper {
+            width: ${100 / columns[3]}%;
+          }
+        }
+      `}
+    `}
   `}
 `;

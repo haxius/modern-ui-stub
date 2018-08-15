@@ -1,12 +1,11 @@
-import React, { Component } from 'react';
-import { Layout } from '../ui';
+import React, { Component } from "react";
+import { Layout } from "../ui";
 
-import SidebarHeader from './SidebarHeader';
-import Header from './Header';
-import Sidebar from './Sidebar';
-import MobileHeader from './MobileHeader';
-
-import Theme from './Theme';
+import SidebarHeader from "./SidebarHeader";
+import Header from "./Header";
+import Sidebar from "./Sidebar";
+import MobileHeader from "./MobileHeader";
+import Theme from "./Theme";
 
 const {
   sidebar: { width: sidebarWidth }
@@ -15,11 +14,11 @@ const {
 class StackLayout extends Component {
   state = { sidebarToggled: false };
 
-  handleHamburger () {
+  handleHamburger() {
     const { sidebarToggled } = this.state;
 
     this.setState({
-      sidebarToggled: !sidebarToggled,
+      sidebarToggled: !sidebarToggled
     });
   }
 
@@ -31,7 +30,7 @@ class StackLayout extends Component {
     return (
       <Layout
         sidebarHeader={SidebarHeader}
-        mobileHeader={<MobileHeader handleHamburger={handleHamburger}/>}
+        mobileHeader={<MobileHeader handleHamburger={handleHamburger} />}
         header={Header}
         sidebar={Sidebar}
         forceSidebar={sidebarToggled}
@@ -41,6 +40,6 @@ class StackLayout extends Component {
       </Layout>
     );
   }
-};
+}
 
 export default StackLayout;

@@ -1,10 +1,10 @@
 import React from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { Box } from "grid-styled";
 
-import HeaderBar from './HeaderBar';
-import SideBar from './SideBar';
-import StretchFlex from './StretchFlex';
+import HeaderBar from "./HeaderBar";
+import SideBar from "./SideBar";
+import StretchFlex from "./StretchFlex";
 
 const AnimatedBox = Box.extend.attrs({
   className: "ui--layout-animatedBox"
@@ -12,16 +12,16 @@ const AnimatedBox = Box.extend.attrs({
   ${({ overflow = "hidden" }) => `
     transition: width 0.3s ease;
     overflow: ${overflow};
-  `}
+  `};
 `;
 
 const SidebarHeader = HeaderBar.extend.attrs({
-  className: 'ui--layout-sidebarHeader'
+  className: "ui--layout-sidebarHeader"
 })`
   ${({
     theme: {
       sidebar: { backgroundColor },
-      breakpoints: [ mobile ]
+      breakpoints: [mobile]
     }
   }) => `
     background-color: ${backgroundColor};
@@ -65,14 +65,17 @@ const Layout = ({
         width={[`${mobileWidth}px`, `${sidebarWidth}px`]}
         className="ui--layout-sidebar"
       >
-        <SideBar>
+        <SideBar forceSidebar={forceSidebar} sidebarWidth={sidebarWidth}>
           <SidebarHeader>{sidebarHeader}</SidebarHeader>
           {sidebar}
         </SideBar>
       </AnimatedBox>
       <AnimatedBox
         is="section"
-        width={[`calc(100% - ${mobileWidth}px)`, `calc(100% - ${sidebarWidth}px)`]}
+        width={[
+          `calc(100% - ${mobileWidth}px)`,
+          `calc(100% - ${sidebarWidth}px)`
+        ]}
         overflow="visible"
         className="ui--layout-content"
       >
