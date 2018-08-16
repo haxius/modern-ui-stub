@@ -12,6 +12,7 @@ Built with:
 * Styled Components v3.4.2
 * Grid Styled v5.0.2
 * MDI React v4.1.0
+* ReCharts v1.1.0
 
 Additional Dependencies
 * ReactDOM v16.4.2
