@@ -8,24 +8,27 @@ export default StretchFlex.extend.attrs({
       breakpoints: [mobile, tablet, desktop, largeDesktop],
       space
     },
-    columns
+    columns,
+    custom
   }) => `
-    flex-direction: column;
-    flex-wrap: wrap;
-
-    > .ui--cardWrapper {
-      flex-grow: 1;
-      flex-shrink: 0;
-      width: 100%;
-    }
-
-    @media screen and (min-width: ${mobile}) {
-      flex-direction: row;
+    ${!custom && `
+      flex-direction: column;
+      flex-wrap: wrap;
 
       > .ui--cardWrapper {
-        flex-grow: 0;
+        flex-grow: 1;
+        flex-shrink: 0;
+        width: 100%;
       }
-    }
+
+      @media screen and (min-width: ${mobile}) {
+        flex-direction: row;
+
+        > .ui--cardWrapper {
+          flex-grow: 0;
+        }
+      }
+    `}
 
     ${!!columns && "string" === typeof columns && `
       @media screen and (min-width: ${mobile}) {
